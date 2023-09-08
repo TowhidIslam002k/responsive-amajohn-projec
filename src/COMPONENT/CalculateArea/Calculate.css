@@ -1,6 +1,6 @@
 .child-of-right {
     position: sticky;
-    top: 0;
+    top: 30px;
 }
 
 .delete-btn {

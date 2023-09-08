@@ -1,0 +1,11 @@
+@media(max-width:500px){
+    #sugges{
+        display: none;
+    }
+}
+
+@media(max-width:328px){
+    #resize-font{
+        font-size: 40px;
+    }
+}
