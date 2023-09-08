@@ -2,10 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import ErrorPage from './COMPONENT/ErrorPage/ErrorPage.jsx';
 import Cart from './COMPONENT/ShoppingCart/Cart.jsx';
 import Order from './COMPONENT/OrderPage/Order.jsx';
@@ -15,6 +12,8 @@ import Login from './COMPONENT/Login/Login.jsx';
 import SignUp from './COMPONENT/SignUp/SignUp.jsx';
 import AuthProviders from './COMPONENT/ContextProviders/AuthProviders.jsx';
 import LogoutPage from './COMPONENT/LogoutPage/LogoutPage.jsx';
+import PrivateRoutes from './COMPONENT/PrivateRoutes/PrivateRoutes.jsx';
+import Inventory from './COMPONENT/Inventory/Inventory.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/checkout',
-        element: <Checkout></Checkout>
+        element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>
+      },
+      {
+        path:'/inventory',
+        element:<Inventory/>
       },
       {
         path: '/login',

@@ -42,7 +42,7 @@ const SignUp = () => {
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
                     <h1 id='resize-font' className="text-5xl font-bold">Sign up now!</h1>
-                    <p id='sugges' className='my-6 font-bold'>Create an account to explore the website that you never seen...</p>
+                    <p id='sugges' className='my-6 font-bold'>Create an account to get more benefit and explore the website...</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleFromData} className="card-body respo">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../ContextProviders/AuthProviders';
 import './Login.css'
 
@@ -8,6 +8,10 @@ const Login = () => {
     const [err, setErr] = useState('');
     const navigate = useNavigate();
     const {loginUser} = useContext(UserContext);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    console.log(location)
     const handleFromData = event => {
         event.preventDefault();
         setErr('');
@@ -21,7 +25,7 @@ const Login = () => {
             const userCredential = result.user;
             console.log(userCredential);
             // alert('Logged in successfully')
-            navigate('/')
+            navigate(from, {replace:true})
         })
         .catch(error => {
             console.log(error)
@@ -33,7 +37,7 @@ const Login = () => {
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
                     <h1 id='resize-font' className="text-5xl font-bold">Login now!</h1>
-                    <p id='sugges' className='py-6 font-bold'>Feel free to visit our website. Your data is secure with us.</p>
+                    <p id='sugges' className='py-6 font-bold'>Login with your email and password to get more access. Your data is secure with us.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleFromData} className="card-body respo ">
