@@ -15,7 +15,10 @@ const PrivateRoutes = ({ children }) => {
     if (user) {
         return children;
     }
-    return <Navigate to='/login' state={{from:location}} replace></Navigate>
+    if(!user){
+        alert('This is a Private area. Please login to access it.')
+        return  <Navigate to='/login' state={{from:location}} replace></Navigate>
+    }
 };
 
 export default PrivateRoutes;

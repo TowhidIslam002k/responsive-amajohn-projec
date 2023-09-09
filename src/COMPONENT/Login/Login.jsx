@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../ContextProviders/AuthProviders';
-import './Login.css'
+import './Login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
     const [err, setErr] = useState('');
     const navigate = useNavigate();
-    const {loginUser} = useContext(UserContext);
+    const { loginUser } = useContext(UserContext);
+
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-
     console.log(location)
+
     const handleFromData = event => {
         event.preventDefault();
         setErr('');
@@ -21,17 +24,24 @@ const Login = () => {
         console.log(email, password)
 
         loginUser(email, password)
-        .then(result => {
-            const userCredential = result.user;
-            console.log(userCredential);
-            // alert('Logged in successfully')
-            navigate(from, {replace:true})
-        })
-        .catch(error => {
-            console.log(error)
-            setErr(error.message)
-        })
+            .then(result => {
+                const userCredential = result.user;
+                console.log(userCredential);
+                // alert('Logged in successfully')
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error)
+                setErr(error.message)
+            })
     }
+    
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [password, setPassword] = useState('');
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">
@@ -51,7 +61,24 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            {/* <input type="password" name='password' placeholder="password" className="input input-bordered" /> */}
+                            <div className="relative">
+                                <input type={passwordVisible ? "text" : "password"}
+                                    name='password' placeholder="password"
+                                    className="input input-bordered w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value={password}
+                                    onChange={(e) => setPassword(e.target.value)} />
+                                <i
+                                    className={`toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${passwordVisible ? 'text-blue-500' : 'text-gray-500'
+                                        }`}
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {passwordVisible ? (
+                                        <FontAwesomeIcon icon={faEyeSlash} />
+                                    ) : (
+                                        <FontAwesomeIcon icon={faEye} />
+                                    )}
+                                </i>
+                            </div>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
