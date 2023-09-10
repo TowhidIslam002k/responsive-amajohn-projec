@@ -1,7 +1,7 @@
 import React from 'react';
 import { createContext } from 'react';
 import app from '../firebase/firebase.config';
-import {getAuth,  createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import {getAuth,  createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendEmailVerification } from 'firebase/auth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -22,6 +22,11 @@ const AuthProviders = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    const verifyEmail = () => {
+        setLoading(true)
+        return sendEmailVerification(auth.currentUser)
+    }
+
     const logOut = () => {
         return signOut(auth)
     }
@@ -39,6 +44,7 @@ const AuthProviders = ({children}) => {
         loading,
         createUser,
         loginUser,
+        verifyEmail,
         logOut,
     }
     return (

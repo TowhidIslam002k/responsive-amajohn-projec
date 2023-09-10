@@ -2,8 +2,8 @@ import React from 'react';
 
 const Inventory = () => {
     return (
-        <div>
-            <h1>This is inventory page</h1>
+        <div className='my-10'>
+            <h1 className='text-5xl text-violet-600 font-bold text-center'>Inventory is comming soon</h1>
         </div>
     );
 };

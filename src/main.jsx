@@ -14,6 +14,7 @@ import AuthProviders from './COMPONENT/ContextProviders/AuthProviders.jsx';
 import LogoutPage from './COMPONENT/LogoutPage/LogoutPage.jsx';
 import PrivateRoutes from './COMPONENT/PrivateRoutes/PrivateRoutes.jsx';
 import Inventory from './COMPONENT/Inventory/Inventory.jsx';
+import ForgotPassword from './COMPONENT/ForgotPassword/ForgotPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/logout',
         element: <LogoutPage></LogoutPage>
+      },
+      {
+        path: '/reset',
+        element: <ForgotPassword></ForgotPassword>
       }
     ]
   }

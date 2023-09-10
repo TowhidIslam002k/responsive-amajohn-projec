@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../ContextProviders/AuthProviders';
 import './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -28,6 +28,9 @@ const Login = () => {
                 const userCredential = result.user;
                 console.log(userCredential);
                 // alert('Logged in successfully')
+                if(!userCredential.emailVerified){
+                    return  window.alert("Please verify your account by clicking on the link sent to you at " + userCredential.email );
+                }
                 navigate(from, { replace: true })
             })
             .catch(error => {
@@ -80,7 +83,10 @@ const Login = () => {
                                 </i>
                             </div>
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <Link to="/reset" className="label-text-alt link link-hover">Forgot password?</Link>
+                            </label>
+                            <label className="label">
+                                <Link to="/signup" className="label-text-alt link link-hover">Don't have any account?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">

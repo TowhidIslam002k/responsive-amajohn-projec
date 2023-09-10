@@ -1,14 +1,14 @@
 import React from 'react';
+import './SignUp.css';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../ContextProviders/AuthProviders';
-import './SignUp.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 
 const SignUp = () => {
-    const { createUser } = useContext(UserContext);
+    const { createUser, verifyEmail } = useContext(UserContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -19,28 +19,37 @@ const SignUp = () => {
         const password = form.password.value;
         const confirmpassword = form.confirmPassword.value;
         console.log(email, password, confirmpassword)
-
+        setError('')
         if (password !== confirmpassword) {
             setError("Passwords do not match");
             return;
         }
         if (password.length < 6) {
             setError('Password must be take at least 6 characters');
-            return ;
+            return;
         }
 
         createUser(email, password)
             .then(result => {
                 const userCredential = result.user;
                 console.log(userCredential);
-                alert('created a account succesfully')
-                navigate('/')
+                navigate('/login')
+                verifyEmail()
+                    .then(() => {
+                        alert("We've sent a verification email. Please check your email and verify your account. Then login with you email and password.");
+                    })
+                    .catch(err => {
+                        console.log(err)
+                        setError(err.message)
+                    })
             })
+
             .catch(err => {
                 console.log(err)
                 setError(err.message)
             })
     }
+
 
     const [confirmPasswordVisible, setComfirmPasswordVisible] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -116,7 +125,7 @@ const SignUp = () => {
                                 </i>
                             </div>
                             <label className="label">
-                                <Link to="/login" className="label-text-alt link link-hover">Already have an account</Link>
+                                <Link to="/login" className="label-text-alt link link-hover">Already have an account?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">
@@ -131,3 +140,14 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+
+
+
+
+
+
+
+
+

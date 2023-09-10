@@ -7,7 +7,7 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 import './Header.css'
 
 const Header = () => {
-    const { user, logOut, loading } = useContext(UserContext);
+    const { user, loading } = useContext(UserContext);
     if (loading) {
         return <nav className='header flex justify-between items-center sticky top-0 z-10'>
             <img src={logo} alt="" />
@@ -34,16 +34,17 @@ const Header = () => {
                 <ActiveLink to="/">Shop</ActiveLink>
                 <ActiveLink to="/orders">orders</ActiveLink>
                 <ActiveLink to="/inventory">inventory</ActiveLink>
-                {/* <ActiveLink to='/login'>login</ActiveLink>
-                <ActiveLink to='/signup'>signup</ActiveLink> */}
-                {user ? (
+
+                {user && user.emailVerified ?
                     <ActiveLink to="/logout">Logout</ActiveLink>
-                ) : (
-                    <>
-                        <ActiveLink to='/login'>Login</ActiveLink>
-                        <ActiveLink to='/signup'>Sign Up</ActiveLink>
-                    </>
-                )}
+                    :
+                    (
+                        <>
+                            <ActiveLink to='/login'>Login</ActiveLink>
+                            <ActiveLink to='/signup'>Sign Up</ActiveLink>
+                        </>
+                    )
+                }
 
             </div>
         </nav>

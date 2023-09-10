@@ -13,7 +13,13 @@ const PrivateRoutes = ({ children }) => {
         </div>
     }
     if (user) {
-        return children;
+        if(user.emailVerified){
+            return children;
+        }
+        else{
+            alert('Please verify your email address.')
+            return;
+        }
     }
     if(!user){
         alert('This is a Private area. Please login to access it.')

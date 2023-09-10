@@ -34,12 +34,6 @@ nav .items {
     }
 }
 
-/* @media(min-width: 403px) and (max-width: 510px) {
-    nav img {
-        width: 25%;
-    }
-} */
-
 @media(max-width: 600px){
     nav.header{
         padding: 0 1rem;
@@ -56,3 +50,15 @@ nav .items {
     }
 }
 
+@media(max-width: 283px) {
+    nav.header {
+        padding: 0 2px;
+    }
+
+    nav.header a {
+        padding: 0 2px;
+    }
+    nav img {
+        width: 24%;
+    }
+}
