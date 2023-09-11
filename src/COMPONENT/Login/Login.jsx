@@ -49,7 +49,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
-                    <h1 id='resize-font' className="text-5xl font-bold">Login now!</h1>
+                    <h1 id='resize-font' className="text-5xl text-primary font-bold">Login now!</h1>
                     <p id='sugges' className='py-6 font-bold'>Login with your email and password to get more access. Your data is secure with us.</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

@@ -53,11 +53,12 @@
 
 @media(min-width: 640px) and (max-width: 710px){
     .delete-btn{
-        font-size: .9rem;
+        font-size: .8rem;
     }
 }
 @media(min-width: 322px) and (max-width: 389px){
     .delete-btn{
         font-size: .7rem;
+
     }
 }

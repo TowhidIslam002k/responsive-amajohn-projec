@@ -68,7 +68,7 @@ const SignUp = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
-                    <h1 id='resize-font' className="text-5xl font-bold">Sign up now!</h1>
+                    <h1 id='resize-font' className="text-5xl text-primary font-bold">Sign up now!</h1>
                     <p id='sugges' className='my-6 font-bold'>Create an account to get more benefit and explore the website...</p>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">

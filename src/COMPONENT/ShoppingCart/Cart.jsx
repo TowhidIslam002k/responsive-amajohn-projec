@@ -69,7 +69,7 @@ const Cart = () => {
                     items={items}
                     clearItems={clearItems}
                 >
-                <Link to='/orders'><button className='delete-btn'>Review order
+                <Link to='/orders'><button className='delete-btn'>Review cart
                 <FontAwesomeIcon icon={faArrowAltCircleRight} />
                 </button></Link>
                 </Calculate>
