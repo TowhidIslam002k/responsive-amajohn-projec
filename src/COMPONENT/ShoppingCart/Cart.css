@@ -4,6 +4,9 @@
     position: relative;
 }
 
+.left-side{
+}
+
 @media (max-width: 639px) {
     .parent-div {
         display: grid;

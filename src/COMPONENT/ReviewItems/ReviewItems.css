@@ -1,12 +1,15 @@
 .single-items{
-    /* width: 570px; */
-    /* height: 100px;s */
-    border: 1px solid blue;
+    border: 2px solid cyan;
     margin: 20px 0;
     border-radius: 10px;
     padding: 8px 10px;
     display: flex;
     align-items: center;
+    background-color: #1D232A;
+}
+
+.font-size{
+    font-size: 1.1rem;
 }
 
 @media(max-width: 639px){

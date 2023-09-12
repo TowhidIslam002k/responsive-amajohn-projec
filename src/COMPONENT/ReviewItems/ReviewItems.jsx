@@ -10,8 +10,8 @@ const ReviewItems = ({product, handleRemoveProduct}) => {
             <img src={img} alt="" />
             <div className="review-details">
                 <p className='pgraph text-primary font-bold text-2xl'>{name}</p>
-                <p className='pgraph text-primary font-bold'>price : <span style={{color:'orange'}}>{price}</span></p>
-                <p className='pgraph text-primary font-bold'>quantity : <span style={{color:'orange'}}>{quantity}</span></p>
+                <p className='pgraph text-primary font-size font-bold'>Price : <span style={{color:'orange'}}>${price}</span></p>
+                <p className='pgraph text-primary font-size font-bold'>Quantity : <span style={{color:'orange'}}>{quantity}</span></p>
             </div>
             <button onClick={()=>handleRemoveProduct(id)} style={{borderRadius:'50%'}}> <FontAwesomeIcon className='delet-icon' icon={faTrashAlt}></FontAwesomeIcon> </button>
         </div>

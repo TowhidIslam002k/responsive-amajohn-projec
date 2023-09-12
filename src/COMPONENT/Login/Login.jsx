@@ -13,7 +13,7 @@ const Login = () => {
 
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    console.log(location)
+    // console.log(location)
 
     const handleFromData = event => {
         event.preventDefault();

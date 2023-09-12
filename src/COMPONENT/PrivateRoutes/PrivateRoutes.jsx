@@ -6,7 +6,7 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(UserContext);
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
     if (loading) {
         return <div className=' flex justify-center items-center min-h-screen'>
             <progress className="progress w-96"></progress>

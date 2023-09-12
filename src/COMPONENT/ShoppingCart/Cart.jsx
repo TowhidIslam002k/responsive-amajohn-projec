@@ -53,7 +53,7 @@ const Cart = () => {
         deleteShoppingCart()
     }
     return (
-        <div className='parent-div'>
+        <div className='parent-div' style={{backgroundColor: '#1D232A'}}>
             <div className="left-side grid sm:grid-cols-2 sm:gap-y-11 sm:gap-x-0 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-11 sm:m-5 md:m-5 lg:m-5">
                 {
                     cart.map(item => <DisplayItems
