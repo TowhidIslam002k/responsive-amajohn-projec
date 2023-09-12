@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import logo from '../../images/Logo.svg'
 import ActiveLink from '../ActiveLink/ActiveLink';
 import { UserContext } from '../ContextProviders/AuthProviders';
@@ -8,6 +7,7 @@ import './Header.css'
 
 const Header = () => {
     const { user, loading } = useContext(UserContext);
+    console.log(user)
     if (loading) {
         return <nav className='header flex justify-between items-center sticky top-0 z-10'>
             <img src={logo} alt="" />
@@ -38,12 +38,10 @@ const Header = () => {
                 {user && user.emailVerified ?
                     <ActiveLink to="/logout">Logout</ActiveLink>
                     :
-                    (
                         <>
                             <ActiveLink to='/login'>Login</ActiveLink>
                             <ActiveLink to='/signup'>Sign Up</ActiveLink>
                         </>
-                    )
                 }
 
             </div>

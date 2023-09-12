@@ -1,15 +1,20 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
 import Calculate from '../CalculateArea/Calculate';
 import DisplayItems from '../DisplayCartItems/DisplayItems';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './Cart.css'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useContext } from 'react';
+import { UserContext } from '../ContextProviders/AuthProviders';
 
 const Cart = () => {
+    const { user } = useContext(UserContext)
     const [cart, setCart] = useState([]);
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
@@ -52,8 +57,30 @@ const Cart = () => {
         setItems([]);
         deleteShoppingCart()
     }
-    return (
-        <div className='parent-div' style={{backgroundColor: '#1D232A'}}>
+
+    // showing toast after every 5 minutes...
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            toast.info(<div>
+                <span>Please login to get more access!</span>
+                <span className='flex justify-end mt-5'>
+                    <Link to="/login">
+                        <button className='link link-hover text-blue-600 border rounded-md'>Login Now</button>
+                    </Link>
+                </span>
+            </div>, {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 5000,
+            })
+        }, 60000);
+
+        return () => { clearInterval(intervalId) };
+    }, [])
+    return (<>
+        {
+            !user && <ToastContainer />
+        }
+        <div className='parent-div' style={{ backgroundColor: '#1D232A' }}>
             <div className="left-side grid sm:grid-cols-2 sm:gap-y-11 sm:gap-x-0 md:grid-cols-2 md:gap-y-11 lg:grid-cols-3 lg:gap-11 sm:m-5 md:m-5 lg:m-5">
                 {
                     cart.map(item => <DisplayItems
@@ -69,12 +96,13 @@ const Cart = () => {
                     items={items}
                     clearItems={clearItems}
                 >
-                <Link to='/orders'><button className='delete-btn'>Review cart
-                <FontAwesomeIcon icon={faArrowAltCircleRight} />
-                </button></Link>
+                    <Link to='/orders'><button className='delete-btn'>Review cart
+                        <FontAwesomeIcon icon={faArrowAltCircleRight} />
+                    </button></Link>
                 </Calculate>
             </div>
         </div>
+    </>
     );
 };
 

@@ -5,11 +5,13 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 import './Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
+import google from '../../images/google.png'
+import github from '../../images/github.png'
 
 const Login = () => {
     const [err, setErr] = useState('');
     const navigate = useNavigate();
-    const { loginUser } = useContext(UserContext);
+    const { loginUser, loginWithGoogle, loginWithGithub } = useContext(UserContext);
 
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -28,8 +30,8 @@ const Login = () => {
                 const userCredential = result.user;
                 console.log(userCredential);
                 // alert('Logged in successfully')
-                if(!userCredential.emailVerified){
-                    return  window.alert("Please verify your account by clicking on the link sent to you at " + userCredential.email );
+                if (!userCredential.emailVerified) {
+                    return window.alert("Please verify your account by clicking on the link sent to you at " + userCredential.email);
                 }
                 navigate(from, { replace: true })
             })
@@ -38,7 +40,30 @@ const Login = () => {
                 setErr(error.message)
             })
     }
-    
+
+
+    // login with google and github..........
+    const handleGoogleSignIn = () => {
+        loginWithGoogle()
+        .then(result => {
+            console.log(result.user)
+            setErr('')
+            navigate('/')
+        })
+        .catch(err => setErr(err.message))
+    }
+
+    const handleGithubSignIn = () => {
+        loginWithGithub()
+        .then(result => {
+            console.log(result.user)
+            setErr('')
+            navigate('/')
+        })
+        .catch(err => setErr(err.message))
+    }
+// login with google and github end//////
+
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [password, setPassword] = useState('');
 
@@ -93,6 +118,12 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                         <p className='text-red-500'>{err}</p>
+                        <button onClick={handleGoogleSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                            <img className=' w-1/12 object-cover' src={google} alt="" /> Continue with google
+                        </button>
+                        <button onClick={handleGithubSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                            <img className=' rounded-xl w-1/12 object-cover' src={github} alt="" /> Continue with github
+                        </button>
                     </form>
                 </div>
             </div>

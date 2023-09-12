@@ -10,9 +10,9 @@ const DisplayItems = ({ items, btnHandler }) => {
             <img className='mx-auto' src={img} alt="" />
             <div className='details pl-3'>
                 <h6 className='text-primary my-3 font-bold'>{name}</h6>
-                <h4 className='text-primary my-3 font-bold'>Price : <span className='text-white'>${price}</span></h4>
-                <h6 className='text-primary my-3 font-bold'>Manufacturer : <span className='text-white'>{seller}</span></h6>
-                <h6 className='text-primary my-3 font-bold'>Rating : <span className='text-white'>{ratings} star</span></h6>
+                <h4 className='text-primary my-3 font-bold'>Price : <span style={{color: 'orange'}}>${price}</span></h4>
+                <h6 className='text-primary my-3 font-bold'>Manufacturer : <span style={{color: 'orange'}}>{seller}</span></h6>
+                <h6 className='text-primary my-3 font-bold'>Rating : <span style={{color: 'orange'}}>{ratings} star</span></h6>
             </div>
             <button onClick={() => btnHandler(items)} className='add-btn'>Add to card
                 <FontAwesomeIcon icon={faShoppingCart} /></button>

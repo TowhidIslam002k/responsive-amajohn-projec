@@ -6,9 +6,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../ContextProviders/AuthProviders';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
+import google from '../../images/google.png'
+import github from '../../images/github.png'
+
 
 const SignUp = () => {
-    const { createUser, verifyEmail } = useContext(UserContext);
+    const { createUser, verifyEmail, loginWithGoogle, loginWithGithub } = useContext(UserContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -24,8 +27,20 @@ const SignUp = () => {
             setError("Passwords do not match");
             return;
         }
-        if (password.length < 6) {
-            setError('Password must be take at least 6 characters');
+        else if (password.length < 8) {
+            setError('Password should be taken at least 8 character');
+            return
+        }
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('Please add at least one uppercase latter.');
+            return;
+        }
+        else if (!/(?=.*[0-9])/.test(password)) {
+            setError('Please add at least one number.');
+            return;
+        }
+        else if (!/(?=.*[!@#$&*])/.test(password)) {
+            setError("Please add atleast one special character[!@#$&*].");
             return;
         }
 
@@ -50,6 +65,28 @@ const SignUp = () => {
             })
     }
 
+     // login with google and github..........
+    const handleGoogleSignIn = () => {
+        loginWithGoogle()
+        .then(result => {
+            console.log(result.user)
+            setError('')
+            navigate('/')
+        })
+        .catch(err => setError(err.message))
+    }
+
+    const handleGithubSignIn = () => {
+        loginWithGithub()
+        .then(result => {
+            console.log(result.user)
+            setError('')
+            navigate('/')
+        })
+        .catch(err => setError(err.message))
+    }
+ // login with google and github end///////
+
 
     const [confirmPasswordVisible, setComfirmPasswordVisible] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -64,7 +101,7 @@ const SignUp = () => {
         setComfirmPasswordVisible(!confirmPasswordVisible);
     }
 
-    return (
+    return (<>
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
@@ -132,10 +169,17 @@ const SignUp = () => {
                             <button className="btn btn-primary">Sign up</button>
                         </div>
                         <p className='text-red-500'>{error}</p>
+                        <button onClick={handleGoogleSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                            <img className=' w-1/12 object-cover' src={google} alt="" /> Continue with google
+                        </button>
+                        <button onClick={handleGithubSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                            <img className=' rounded-xl w-1/12 object-cover' src={github} alt="" /> Continue with github
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
+    </>
     );
 };
 

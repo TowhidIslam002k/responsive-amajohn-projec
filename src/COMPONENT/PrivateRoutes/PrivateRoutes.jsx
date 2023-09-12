@@ -6,24 +6,23 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(UserContext);
     const location = useLocation();
-    // console.log(location)
     if (loading) {
         return <div className=' flex justify-center items-center min-h-screen'>
             <progress className="progress w-96"></progress>
         </div>
     }
     if (user) {
-        if(user.emailVerified){
+        if (user.emailVerified) {
             return children;
         }
-        else{
+        else {
             alert('Please verify your email address.')
-            return;
+            return null;
         }
     }
-    if(!user){
-        alert('This is a Private area. Please login to access it.')
-        return  <Navigate to='/login' state={{from:location}} replace></Navigate>
+    if (!user) {
+        alert('This is a Private area. Please login to access it.');
+        return <Navigate to='/login' state={{ from: location }} replace></Navigate>;
     }
 };
 
