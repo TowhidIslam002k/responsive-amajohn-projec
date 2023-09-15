@@ -44,23 +44,7 @@ const Order = () => {
 
         return () => { clearInterval(intervalId) };
     }, [])
-
-    //set time out.......
-    useEffect(()=>{ setTimeout(() => {
-        toast.info(<div>
-            <span>Please login to get more access!</span>
-            <span className='flex justify-end mt-5'>
-                <Link to="/login">
-                    <button className='link link-hover text-blue-600 border rounded-md'>Login Now</button>
-                </Link>
-            </span>
-        </div>, {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 5000,
-        })
-    }, 5000);
-    },[])
-    //.................................
+    
     return (<>
         {!user && <ToastContainer />}
         <div className='parent-div'>

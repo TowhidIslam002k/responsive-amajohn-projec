@@ -79,6 +79,8 @@ const Cart = () => {
 
     //set time out..........
     useEffect(()=>{ setTimeout(() => {
+        const hasShownToast = sessionStorage.getItem('hasShownLoginToast');
+        if(!hasShownToast){
         toast.info(<div>
             <span>Please login to get more access!</span>
             <span className='flex justify-end mt-5'>
@@ -90,6 +92,8 @@ const Cart = () => {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 5000,
         })
+        sessionStorage.setItem("hasShownLoginToast", true)
+        }
     }, 5000);
     },[])
 
