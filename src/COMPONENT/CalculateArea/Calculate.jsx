@@ -18,12 +18,12 @@ const Calculate = ({ items, clearItems, children }) => {
     const netTotal = total + totalShipping + tax;
 
     return (
-        <div className="child-of-right text-violet-700">
-            <h3 className='font-bold mb-5'>Selected Items : {quantity}</h3>
-            <p className='font-bold mb-5'>Total Price : {total}$</p>
-            <p className='font-bold mb-5'>Shipping Cost: {totalShipping}$</p>
-            <p className='font-bold mb-5'>Tax : {tax.toFixed(2)}$</p>
-            <p className='font-bold mb-5'>Grand Total : {netTotal.toFixed(2)}$</p>
+        <div className="child-of-right text-primary">
+            <h3 className='font-bold mb-5'>Selected Items : <span style={{color:'#cc0066'}}>{quantity}</span></h3>
+            <p className='font-bold mb-5'>Total Price : <span style={{color:'#cc0066'}}>{total}$</span></p>
+            <p className='font-bold mb-5'>Shipping Cost: <span style={{color:'#cc0066'}}>{totalShipping}$</span></p>
+            <p className='font-bold mb-5'>Tax : <span style={{color:'#cc0066'}}>{tax.toFixed(2)}$</span></p>
+            <p className='font-bold mb-5'>Grand Total : <span style={{color:'#cc0066'}}>{netTotal.toFixed(2)}$</span></p>
             <button onClick={clearItems} className="delete-btn">
                 Clear Items
                 <FontAwesomeIcon icon={faTrashAlt} />

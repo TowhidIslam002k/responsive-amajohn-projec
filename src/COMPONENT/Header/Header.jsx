@@ -27,6 +27,18 @@ const Header = () => {
         </nav>;
     }
 
+    if (user && user.photoURL !== ''){
+        return <nav className='header flex justify-between items-center sticky top-0 z-10'>
+            <img src={logo} alt="" />
+            <div className="items md:w-6/12 sm:w-7/12 lg:w-4/12 xl:w-1/4">
+                <ActiveLink to="/">Shop</ActiveLink>
+                <ActiveLink to="/orders">orders</ActiveLink>
+                <ActiveLink to="/inventory">inventory</ActiveLink>
+                <ActiveLink to="/logout">Logout</ActiveLink>
+            </div>
+        </nav>
+    }
+
     return (
         <nav className='header flex justify-between items-center sticky top-0 z-10'>
             <img src={logo} alt="" />
@@ -38,10 +50,10 @@ const Header = () => {
                 {user && user.emailVerified ?
                     <ActiveLink to="/logout">Logout</ActiveLink>
                     :
-                        <>
-                            <ActiveLink to='/login'>Login</ActiveLink>
-                            <ActiveLink to='/signup'>Sign Up</ActiveLink>
-                        </>
+                    <>
+                        <ActiveLink to='/login'>Login</ActiveLink>
+                        <ActiveLink to='/signup'>Sign Up</ActiveLink>
+                    </>
                 }
 
             </div>

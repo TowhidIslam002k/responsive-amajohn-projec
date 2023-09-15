@@ -169,13 +169,13 @@ const SignUp = () => {
                             <button className="btn btn-primary">Sign up</button>
                         </div>
                         <p className='text-red-500'>{error}</p>
-                        <button onClick={handleGoogleSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                    </form>
+                        <button onClick={handleGoogleSignIn} className='text-black border w-5/6 mx-auto border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
                             <img className=' w-1/12 object-cover' src={google} alt="" /> Continue with google
                         </button>
-                        <button onClick={handleGithubSignIn} className='text-black border border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
+                        <button onClick={handleGithubSignIn} className='text-black border w-5/6 mx-auto mt-2 mb-7 border-black rounded-md font-bold hover:text-white hover:bg-black flex justify-center items-center'>
                             <img className=' rounded-xl w-1/12 object-cover' src={github} alt="" /> Continue with github
                         </button>
-                    </form>
                 </div>
             </div>
         </div>
