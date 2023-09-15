@@ -12,7 +12,7 @@ const PrivateRoutes = ({ children }) => {
         </div>
     }
     if (user) {
-        if (user.emailVerified) {
+        if (user.emailVerified || user.photoURL !== '') {
             return children;
         }
         else {
@@ -21,7 +21,7 @@ const PrivateRoutes = ({ children }) => {
         }
     }
     if (!user) {
-        alert('This is a Private area. Please login to access it.');
+        alert('This is a Private area. Please login or sign up to get all access.');
         return <Navigate to='/login' state={{ from: location }} replace></Navigate>;
     }
 };
