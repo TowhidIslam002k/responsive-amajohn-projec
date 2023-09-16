@@ -11,7 +11,7 @@ import github from '../../images/github.png'
 
 
 const SignUp = () => {
-    const { createUser, verifyEmail, loginWithGoogle, loginWithGithub } = useContext(UserContext);
+    const { createUser, verifyEmail, loginWithGoogle, loginWithGithub, loading } = useContext(UserContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -100,7 +100,14 @@ const SignUp = () => {
     const toggleConfirmPasswordVisibility = () => {
         setComfirmPasswordVisible(!confirmPasswordVisible);
     }
-
+    
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
+    
     return (<>
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">

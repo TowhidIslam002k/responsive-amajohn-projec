@@ -1,11 +1,21 @@
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../ContextProviders/AuthProviders';
 import app from '../firebase/firebase.config';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const auth = getAuth(app)
+    const {loading} = useContext(UserContext)
+    
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
 
     const handleResetPassword = () => {
         setError('')

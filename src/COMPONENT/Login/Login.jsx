@@ -11,7 +11,7 @@ import github from '../../images/github.png'
 const Login = () => {
     const [err, setErr] = useState('');
     const navigate = useNavigate();
-    const { loginUser, loginWithGoogle, loginWithGithub } = useContext(UserContext);
+    const { loginUser, loginWithGoogle, loginWithGithub, loading } = useContext(UserContext);
 
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -70,6 +70,14 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
+
+    
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">

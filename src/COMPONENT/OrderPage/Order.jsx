@@ -11,7 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { UserContext } from '../ContextProviders/AuthProviders';
 
 const Order = () => {
-    const {user} = useContext(UserContext);
+    const {user, loading} = useContext(UserContext);
     const SavedCart = useLoaderData();
     const [cart, setCart] = useState(SavedCart);
     console.log(cart)
@@ -44,6 +44,14 @@ const Order = () => {
 
         return () => { clearInterval(intervalId) };
     }, [])
+    
+
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
     
     return (<>
         {!user && <ToastContainer />}

@@ -14,7 +14,15 @@ import { useContext } from 'react';
 import { UserContext } from '../ContextProviders/AuthProviders';
 
 const Cart = () => {
-    const { user } = useContext(UserContext)
+    const { user, loading } = useContext(UserContext)
+    
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
+
     const [cart, setCart] = useState([]);
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')

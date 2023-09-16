@@ -5,8 +5,15 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 
 const LogoutPage = () => {
     const [showModal, setShowModal] = useState(false);
-    const { logOut } = useContext(UserContext);
+    const { logOut, loading } = useContext(UserContext);
     const navigate = useNavigate();
+    
+    //set loader.......................
+    if (loading) {
+        return <div className=' flex justify-center items-center min-h-screen'>
+            <progress className="progress w-96"></progress>
+        </div>
+    }
 
     const handleLogout = () => {
         logOut()
