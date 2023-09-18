@@ -9,6 +9,7 @@ import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import './Order.css'
 import { toast, ToastContainer } from 'react-toastify';
 import { UserContext } from '../ContextProviders/AuthProviders';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Order = () => {
     const {user, loading} = useContext(UserContext);
@@ -54,6 +55,7 @@ const Order = () => {
     }
     
     return (<>
+        <ScrollToTop />
         {!user && <ToastContainer />}
         <div className='parent-div'>
             <div className="review-product">

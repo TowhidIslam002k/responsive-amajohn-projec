@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../ContextProviders/AuthProviders';
 import app from '../firebase/firebase.config';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
@@ -31,6 +32,8 @@ const ForgotPassword = () => {
     };
 
     return (
+        <>
+        <ScrollToTop />
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
                 <div className="text-center">
@@ -56,6 +59,7 @@ const ForgotPassword = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

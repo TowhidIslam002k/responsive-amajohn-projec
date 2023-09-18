@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../ContextProviders/AuthProviders';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Checkout = () => {
     const {loading} = useContext(UserContext);
@@ -13,9 +14,12 @@ const Checkout = () => {
     }
 
     return (
+        <>
+        <ScrollToTop />
         <div className='my-10'>
             <h1 className='text-5xl text-violet-600 font-bold text-center'>checkout is comming soon</h1>
         </div>
+        </>
     );
 };
 

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons'
 import google from '../../images/google.png'
 import github from '../../images/github.png'
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 
 const SignUp = () => {
@@ -109,6 +110,7 @@ const SignUp = () => {
     }
     
     return (<>
+        <ScrollToTop />
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col md:flex-row-reverse">
                 <div className="text-center md:text-left">
