@@ -52,7 +52,7 @@ const SignUp = () => {
                 navigate('/login')
                 verifyEmail()
                     .then(() => {
-                        alert("We've sent a verification email. Please check your email and verify your account. Then login with you email and password.");
+                         alert("We've sent a verification email. Please check your email and verify your account. Then login with you email and password.");
                     })
                     .catch(err => {
                         console.log(err)
@@ -103,11 +103,11 @@ const SignUp = () => {
     }
     
     //set loader.......................
-    if (loading) {
-        return <div className=' flex justify-center items-center min-h-screen'>
-            <progress className="progress w-96"></progress>
-        </div>
-    }
+    // if (loading) {
+    //     return <div className=' flex justify-center items-center min-h-screen'>
+    //         <progress className="progress w-96"></progress>
+    //     </div>
+    // }
     
     return (<>
         <ScrollToTop />
@@ -123,7 +123,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name='email' type="text" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="text" placeholder="email" className="input input-bordered" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -133,11 +133,12 @@ const SignUp = () => {
                             <div className="relative">
                                 <input type={passwordVisible ? "text" : "password"}
                                     name='password' placeholder="password"
-                                    className="input input-bordered w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value={password}
-                                    onChange={(e) => setPassword(e.target.value)} />
+                                    className="input input-bordered w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)} 
+                                    required />
                                 <i
-                                    className={`toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${passwordVisible ? 'text-blue-500' : 'text-gray-500'
-                                        }`}
+                                    className={`toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${passwordVisible ? 'text-blue-500' : 'text-gray-500'}`}
                                     onClick={togglePasswordVisibility}
                                 >
                                     {passwordVisible ? (
@@ -156,8 +157,10 @@ const SignUp = () => {
                             <div className="relative">
                                 <input type={confirmPasswordVisible ? "text" : "password"}
                                     name='confirmPassword' placeholder="confirm password"
-                                    className="input input-bordered w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500" value={confirmPass}
-                                    onChange={(e) => setConfirmPass(e.target.value)} />
+                                    className="input input-bordered w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                                    value={confirmPass}
+                                    onChange={(e) => setConfirmPass(e.target.value)} 
+                                    required/>
                                 <i
                                     className={`toggle-password absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer ${confirmPasswordVisible ? 'text-blue-500' : 'text-gray-500'
                                         }`}

@@ -12,11 +12,11 @@ const ForgotPassword = () => {
     const {loading} = useContext(UserContext)
     
     //set loader.......................
-    if (loading) {
-        return <div className=' flex justify-center items-center min-h-screen'>
-            <progress className="progress w-96"></progress>
-        </div>
-    }
+    // if (loading) {
+    //     return <div className=' flex justify-center items-center min-h-screen'>
+    //         <progress className="progress w-96"></progress>
+    //     </div>
+    // }
 
     const handleResetPassword = () => {
         setError('')
