@@ -9,7 +9,7 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const auth = getAuth(app)
-    const {loading} = useContext(UserContext)
+    // const {loading} = useContext(UserContext)
     
     //set loader.......................
     // if (loading) {
