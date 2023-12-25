@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const DisplayItems = ({ items, btnHandler }) => {
-    const { name, img, ratings, quantity, id, seller, price } = items;
+    const { name, img, ratings, quantity, _id, seller, price } = items;
     return (
         <div className='product w-full lg:w-full md:w-4/5 sm:w-4/5 mb-5 sm:mb-0 lg:mb-0 md:mb-0'>
             <img className='mx-auto' src={img} alt="" />

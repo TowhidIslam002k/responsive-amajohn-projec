@@ -19,11 +19,11 @@ const Calculate = ({ items, clearItems, children }) => {
 
     return (
         <div className="child-of-right text-primary">
-            <h3 className='font-bold mb-5'>Selected Items : <span style={{color:'#cc0066'}}>{quantity}</span></h3>
-            <p className='font-bold mb-5'>Total Price : <span style={{color:'#cc0066'}}>{total}$</span></p>
-            <p className='font-bold mb-5'>Shipping Cost: <span style={{color:'#cc0066'}}>{totalShipping}$</span></p>
-            <p className='font-bold mb-5'>Tax : <span style={{color:'#cc0066'}}>{tax.toFixed(2)}$</span></p>
-            <p className='font-bold mb-5'>Grand Total : <span style={{color:'#cc0066'}}>{netTotal.toFixed(2)}$</span></p>
+            <h3 className='font-bold mb-5'>Selected Items : <span style={{ color: '#cc0066' }}>{quantity}</span></h3>
+            <p className='font-bold mb-5'>Total Price : <span style={{ color: '#cc0066' }}>{total}$</span></p>
+            <p className='font-bold mb-5'>Shipping Cost: <span style={{ color: '#cc0066' }}>{totalShipping}$</span></p>
+            <p className='font-bold mb-5'>Tax : <span style={{ color: '#cc0066' }}>{tax.toFixed(2)}$</span></p>
+            <p className='font-bold mb-5'>Grand Total : <span style={{ color: '#cc0066' }}>{netTotal.toFixed(2)}$</span></p>
             <button onClick={clearItems} className="delete-btn">
                 Clear Items
                 <FontAwesomeIcon icon={faTrashAlt} />
@@ -31,7 +31,7 @@ const Calculate = ({ items, clearItems, children }) => {
             {
                 children
             }
-        </div>
+        </div> 
     );
 };
 

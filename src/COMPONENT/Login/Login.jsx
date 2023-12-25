@@ -24,12 +24,12 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        // console.log(email, password)
 
         loginUser(email, password)
             .then(result => {
                 const userCredential = result.user;
-                console.log(userCredential);
+                // console.log(userCredential);
                 // alert('Logged in successfully')
                 if (!userCredential.emailVerified) {
                     return window.alert("Please verify your account by clicking on the link sent to you at " + userCredential.email);

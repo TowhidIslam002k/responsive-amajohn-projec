@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from './COMPONENT/ErrorPage/ErrorPage.jsx';
 import Cart from './COMPONENT/ShoppingCart/Cart.jsx';
 import Order from './COMPONENT/OrderPage/Order.jsx';
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         element: <PrivateRoutes><Checkout></Checkout></PrivateRoutes>
       },
       {
-        path:'/inventory',
-        element:<PrivateRoutes><Inventory/></PrivateRoutes>
+        path: '/inventory',
+        element: <PrivateRoutes><Inventory /></PrivateRoutes>
       },
       {
         path: '/login',

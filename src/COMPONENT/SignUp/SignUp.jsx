@@ -12,7 +12,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 
 const SignUp = () => {
-    const { createUser, verifyEmail, loginWithGoogle, loginWithGithub, loading } = useContext(UserContext);
+    const { createUser, verifyEmail, loginWithGoogle, loginWithGithub, } = useContext(UserContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -22,7 +22,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmpassword = form.confirmPassword.value;
-        console.log(email, password, confirmpassword)
+        // console.log(email, password, confirmpassword)
         setError('')
         if (password !== confirmpassword) {
             setError("Passwords do not match");
@@ -48,7 +48,7 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const userCredential = result.user;
-                console.log(userCredential);
+                // console.log(userCredential);
                 navigate('/login')
                 verifyEmail()
                     .then(() => {

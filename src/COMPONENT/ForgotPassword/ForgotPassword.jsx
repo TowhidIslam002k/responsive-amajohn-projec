@@ -1,7 +1,5 @@
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-import React, { useState } from 'react';
-import { useContext } from 'react';
-import { UserContext } from '../ContextProviders/AuthProviders';
+import { useState } from 'react';
 import app from '../firebase/firebase.config';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
@@ -9,14 +7,6 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const auth = getAuth(app)
-    // const {loading} = useContext(UserContext)
-    
-    //set loader.......................
-    // if (loading) {
-    //     return <div className=' flex justify-center items-center min-h-screen'>
-    //         <progress className="progress w-96"></progress>
-    //     </div>
-    // }
 
     const handleResetPassword = () => {
         setError('')
@@ -33,32 +23,32 @@ const ForgotPassword = () => {
 
     return (
         <>
-        <ScrollToTop />
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col">
-                <div className="text-center">
-                    <h1 className="text-5xl font-bold text-primary">Forgot Password</h1>
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <div className="card-body respo">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" 
-                            placeholder="Enter your email" 
-                            className="input input-bordered" 
-                            value={email}
-                            onChange={(e)=> setEmail(e.target.value)}/>
+            <ScrollToTop />
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col">
+                    <div className="text-center">
+                        <h1 className="text-5xl font-bold text-primary">Forgot Password</h1>
+                    </div>
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card-body respo">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email"
+                                    placeholder="Enter your email"
+                                    className="input input-bordered"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button onClick={handleResetPassword} className="btn btn-primary">Send Reset Email</button>
+                            </div>
+                            <p className='text-red-500'>{error}</p>
                         </div>
-                        <div className="form-control mt-6">
-                            <button onClick={handleResetPassword} className="btn btn-primary">Send Reset Email</button>
-                        </div>
-                    <p className='text-red-500'>{error}</p>
                     </div>
                 </div>
             </div>
-        </div>
         </>
     );
 };

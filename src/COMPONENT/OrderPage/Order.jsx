@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { Link , useLoaderData } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import Calculate from '../CalculateArea/Calculate';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
@@ -12,13 +12,13 @@ import { UserContext } from '../ContextProviders/AuthProviders';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 const Order = () => {
-    const {user, loading} = useContext(UserContext);
+    const { user, loading } = useContext(UserContext);
     const SavedCart = useLoaderData();
     const [cart, setCart] = useState(SavedCart);
-    console.log(cart)
+    // console.log(cart)
 
     const handleRemoveProduct = id => {
-        const remaining = cart.filter(p => p.id !== id);
+        const remaining = cart.filter(p => p._id !== id);
         setCart(remaining)
         removeFromDb(id)
     }
@@ -26,7 +26,7 @@ const Order = () => {
     const clearItems = () => {
         setCart([])
         deleteShoppingCart()
-    } 
+    }
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -45,7 +45,7 @@ const Order = () => {
 
         return () => { clearInterval(intervalId) };
     }, [])
-    
+
 
     //set loader.......................
     if (loading) {
@@ -53,34 +53,34 @@ const Order = () => {
             <progress className="progress w-96"></progress>
         </div>
     }
-    
+
     return (<>
         <ScrollToTop />
         {!user && <ToastContainer />}
         <div className='parent-div'>
             <div className="review-product">
-                { cart.length !== 0?
-                    cart.map(product => <ReviewItems 
-                    key={product.id}
-                    product={product}
-                    handleRemoveProduct={handleRemoveProduct}
+                {cart.length !== 0 ?
+                    cart.map(product => <ReviewItems
+                        key={product._id}
+                        product={product}
+                        handleRemoveProduct={handleRemoveProduct}
                     ></ReviewItems>)
-                    : 
-                    <h1 style={{backgroundColor: '#1D232a'}} className='text-primary font-bold lg:text-5xl text-3xl border rounded p-5 my-5 order-text'>
+                    :
+                    <h1 style={{ backgroundColor: '#1D232a' }} className='text-primary font-bold lg:text-5xl text-3xl border rounded p-5 my-5 order-text'>
                         Your Cart is Empty. Please add some product.
                     </h1>
                 }
             </div>
             <div className="right-side mt-5 bg-gray-400 pl-1 pt-1 py-10">
                 <Calculate items={cart}
-                clearItems={clearItems}>
+                    clearItems={clearItems}>
                     <Link to='/checkout'><button className="delete-btn">Check Out
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} />                
+                        <FontAwesomeIcon icon={faArrowAltCircleRight} />
                     </button></Link>
                 </Calculate>
             </div>
         </div>
-        </>
+    </>
     );
 };
 

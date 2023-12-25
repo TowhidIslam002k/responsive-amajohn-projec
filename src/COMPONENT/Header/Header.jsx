@@ -1,4 +1,3 @@
-import React from 'react';
 import { useContext } from 'react';
 import logo from '../../images/Logo.svg'
 import ActiveLink from '../ActiveLink/ActiveLink';
@@ -7,7 +6,7 @@ import './Header.css'
 
 const Header = () => {
     const { user, loading } = useContext(UserContext);
-    console.log(user)
+    // console.log(user)
     if (loading) {
         return <nav className='header flex justify-between items-center sticky top-0 z-10'>
             <img src={logo} alt="" />
@@ -37,7 +36,7 @@ const Header = () => {
                 <ActiveLink to="/orders">orders</ActiveLink>
                 <ActiveLink to="/inventory">inventory</ActiveLink>
 
-                {user && user.emailVerified?
+                {user && user.emailVerified ?
                     <ActiveLink to="/logout">Logout</ActiveLink>
                     :
                     <>
